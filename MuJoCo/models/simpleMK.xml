@@ -1,0 +1,102 @@
+<!-- =========================================================================== #
+# Project:        [M3X] Whip Project
+# Title:          XML Model File for 2D Upper Limb
+# Author:         Moses C. Nah
+# Creation Date:  Monday, July 1st, 2020
+
+# Description: 	  This model file is simply for analyzing the forward kinematics of the upper-limb model.
+#									This planar 2D_UpperLimb model has 1DOF on the shoulder joint and 1DOF on the elbow joint.
+#									Both shoulder and elbow joint is for the flexion/extension movement.
+# =========================================================================== -->
+
+
+<mujoco model="2D_UpperLimb">
+
+  <compiler inertiafromgeom = "auto"
+            angle 					= "radian" />
+
+						<option  timestep  = '0.0001'
+										iterations = '50'
+										    solver = 'PGS'
+										integrator = 'Euler'
+										   gravity = "0 0 0"
+									   collision = 'predefined' > <!-- Turn off collision -->
+
+							<flag energy = 'enable'/>
+
+						</option>
+
+
+  <asset>
+    <!-- Texture of the surrounding sky box
+         setting everything as white-ish color for better visualization -->
+     <texture type 		= "skybox"
+              builtin = "flat"
+              rgb1 		= "1 1 1"
+              rgb2		= "1 1 1"
+              width 	= "100"
+              height 	= "100"/>
+
+		<!-- <texture type		  = "skybox"
+             builtin  = "checker"
+             rgb1 		= ".1 .2 .3"
+             rgb2 		= ".2 .3 .4"
+             width	  = "200"
+            height 	  = "200"
+              mark 	  = "edge"/> -->
+
+     <!-- Joint and Limb Color -->
+     <material name = "JointColor" rgba = "1.0 1.0 0.0 1" />
+     <material name = "LimbColor"  rgba = "0.7 0.7 0.7 1" />
+  </asset>
+
+
+  <worldbody>
+
+        <body name='cameramover' mocap='true' pos='0 0 0'>
+						<camera name='mycamera' pos='0.0 2.0 2.0' euler='1.5707 0 0'/>
+      	</body>
+
+
+    <!-- ===============  MODEL STARTS  =============== -->
+
+    <!-- ============ UPPER ARM START =============== -->
+		<body name='root' pos='0 0 0' euler='0 0 0'>
+			<joint name='impedanceController' ref='0' type='slide' stiffness='0' pos='0 0 0' axis='1 0 0' />
+			<inertial pos='0 0 0'  mass='1' diaginertia='1 1 1' />
+			<geom name='manipulatorMassGEOM1' type='box' pos='0 0 0' material='JointColor' size='0.1 0.1 0.1' mass='0'/>
+
+			<body name='manipulatedMass1' pos='0 0 0' euler='0 0 0'>
+				<joint name='spring1' ref='0' type='slide' stiffness='1' pos='0 0 0' axis='1 0 0' />
+				<inertial pos='1.0 0 0' mass='1' diaginertia='1 1 1' />
+				<geom name='manipulatedMassGEOM2' type='box' pos='1.0 0 0' material='JointColor' size='0.1 0.1 0.1' mass='0'/>
+
+				<body name='manipulatedMass2' pos='1 0 0' euler='0 0 0'>
+					<joint name='spring2' ref='0' type='slide' stiffness='1' pos='0 0 0' axis='1 0 0' />
+					<inertial pos='1.0 0 0' mass='1' diaginertia='1 1 1' />
+					<geom name='manipulatedMassGEOM3' type='box' pos='1.0 0 0' material='JointColor' size='0.1 0.1 0.1' mass='0'/>
+
+					<body name='manipulatedMass3' pos='1 0 0' euler='0 0 0'>
+						<joint name='spring3' ref='0' type='slide' stiffness='1' pos='0 0 0' axis='1 0 0' />
+						<inertial pos='1.0 0 0' mass='1' diaginertia='1 1 1' />
+						<geom name='manipulatedMassGEOM4' type='box' pos='1.0 0 0' material='JointColor' size='0.1 0.1 0.1' mass='0'/>
+
+
+					</body>
+				</body>
+			</body>
+
+		</body>
+
+
+  </worldbody>
+
+	<!-- This xml model file don't use the actuator, since it simply runs to the exact joint position -->
+	<actuator>
+
+		<motor joint = 'impedanceController' name = 'impedanceControllerAct'  forcelimited = 'false'/>
+
+  </actuator>
+
+
+</mujoco>
