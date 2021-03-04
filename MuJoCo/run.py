@@ -65,8 +65,10 @@ Options:
                                The starting number of the xml model file indicates the type of simulation, hence the --modelName
                                already contains the simulation typep information.
                                     List of models.
-                                        1: simpleMK.xml - The most simple manipulator and manipulated object
-                               [default: simpleMK.xml]
+                                        1. FILL IN
+                                        2. FILL IN
+                                        3. FILL IN
+                               default is None
     --videoOFF                 Turning off the video
                                This is useful for cases when you want to make the computation of the simulation faster
                                [default: False]
@@ -120,6 +122,7 @@ from sympy.utilities.lambdify import lambdify, implemented_function
 # [Local modules]
 from modules.simulation   import Simulation
 from modules.controllers  import ImpedanceController
+from modules.models       import TransmissionLine
 from modules.utils        import ( my_print, my_mkdir, args_cleanup,
                                    my_rmdir, str2float, camel2snake, snake2camel )
 from modules.constants    import Constants
@@ -155,8 +158,13 @@ my_print( saveDir = args[ 'saveDir' ] )
 def main( ):
     # ============================================================================= #
     # (1A) [GENERATE MODEL]
+    if args[ 'modelName'  ] is not None:
+        model_name = args[ 'modelName' ]
+    else:
+        TL = TransmissionLine( m = 0.1, k = 1000, N = 100 )
+        TL.gen_xml(  )
+        model_name = TL.name
 
-    model_name = args[ 'modelName' ]
     my_print( modelName = model_name )
 
     # ============================================================================= #
@@ -173,14 +181,15 @@ def main( ):
 
     # [Type #1] Joint Space tracking task
     # [Type #2] Cartesian Space tracking task
-    ctrl = ImpedanceController( mySim.mjModel, mySim.mjData )
+    ctrl = ImpedanceController( mySim.mjModel, mySim.mjData, type = "pulse" )
 
-    trajectory = 0.4 * sp.sin( 2 * ctrl.t_sym  )
+    trajectory = 0.1 * sp.sin( 10 * ctrl.t_sym  )
 
     ctrl.set_ZFT( trajectory )
-    ctrl.set_ctrl_par( K =  1, B = 0 )
+    ctrl.set_ctrl_par( K = 0.1, B = 0 )
     mySim.attach_controller( ctrl )
     mySim.run( )
+
 
 
     if args[ 'saveDir' ] is not None:

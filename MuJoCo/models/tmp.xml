@@ -1,0 +1,222 @@
+<mujoco model="2D_UpperLimb">
+  <compiler inertiafromgeom="auto" angle="radian" />
+   <option timestep="0.0001" iterations="50" solver="PGS" integrator="Euler" gravity="0 0 0" collision="predefined">
+     <flag energy="enable" />
+   </option>
+   <asset>
+     <texture type="skybox" builtin="flat" rgb1="1 1 1" rgb2="1 1 1" width="100" height="100" />
+      <material name="JointColor" rgba="1.0 1.0 0.0 1" />
+      <material name="LimbColor" rgba="0.7 0.7 0.7 1" />
+   </asset>
+   <worldbody>
+     <body name="cameramover" mocap="true" pos="0 0 0">
+        <camera name="mycamera" pos="0.0 2.0 2.0" euler="1.5707 0 0" />
+      </body>
+      <body name="root" pos="0 0 0" euler="0 0 0">
+        <joint ref="0" type="slide" name="spring1" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+         <geom type="box" name="mass1" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+         <body name="node2" euler="0 0 0" pos=" 0.0100 0 0">
+           <joint ref="0" type="slide" name="spring2" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+            <geom type="box" name="mass2" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+            <body name="node3" euler="0 0 0" pos=" 0.0100 0 0">
+              <joint ref="0" type="slide" name="spring3" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+               <geom type="box" name="mass3" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+               <body name="node4" euler="0 0 0" pos=" 0.0100 0 0">
+                 <joint ref="0" type="slide" name="spring4" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                  <geom type="box" name="mass4" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                  <body name="node5" euler="0 0 0" pos=" 0.0100 0 0">
+                    <joint ref="0" type="slide" name="spring5" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                     <geom type="box" name="mass5" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                     <body name="node6" euler="0 0 0" pos=" 0.0100 0 0">
+                       <joint ref="0" type="slide" name="spring6" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                        <geom type="box" name="mass6" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                        <body name="node7" euler="0 0 0" pos=" 0.0100 0 0">
+                          <joint ref="0" type="slide" name="spring7" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                           <geom type="box" name="mass7" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                           <body name="node8" euler="0 0 0" pos=" 0.0100 0 0">
+                             <joint ref="0" type="slide" name="spring8" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                              <geom type="box" name="mass8" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                              <body name="node9" euler="0 0 0" pos=" 0.0100 0 0">
+                                <joint ref="0" type="slide" name="spring9" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                 <geom type="box" name="mass9" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                 <body name="node10" euler="0 0 0" pos=" 0.0100 0 0">
+                                   <joint ref="0" type="slide" name="spring10" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                    <geom type="box" name="mass10" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                    <body name="node11" euler="0 0 0" pos=" 0.0100 0 0">
+                                      <joint ref="0" type="slide" name="spring11" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                       <geom type="box" name="mass11" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                       <body name="node12" euler="0 0 0" pos=" 0.0100 0 0">
+                                         <joint ref="0" type="slide" name="spring12" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                          <geom type="box" name="mass12" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                          <body name="node13" euler="0 0 0" pos=" 0.0100 0 0">
+                                            <joint ref="0" type="slide" name="spring13" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                             <geom type="box" name="mass13" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                             <body name="node14" euler="0 0 0" pos=" 0.0100 0 0">
+                                               <joint ref="0" type="slide" name="spring14" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                                <geom type="box" name="mass14" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                                <body name="node15" euler="0 0 0" pos=" 0.0100 0 0">
+                                                  <joint ref="0" type="slide" name="spring15" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                                   <geom type="box" name="mass15" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                                   <body name="node16" euler="0 0 0" pos=" 0.0100 0 0">
+                                                     <joint ref="0" type="slide" name="spring16" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                                      <geom type="box" name="mass16" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                                      <body name="node17" euler="0 0 0" pos=" 0.0100 0 0">
+                                                        <joint ref="0" type="slide" name="spring17" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                                         <geom type="box" name="mass17" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                                         <body name="node18" euler="0 0 0" pos=" 0.0100 0 0">
+                                                           <joint ref="0" type="slide" name="spring18" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                                            <geom type="box" name="mass18" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                                            <body name="node19" euler="0 0 0" pos=" 0.0100 0 0">
+                                                              <joint ref="0" type="slide" name="spring19" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                                               <geom type="box" name="mass19" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                                               <body name="node20" euler="0 0 0" pos=" 0.0100 0 0">
+                                                                 <joint ref="0" type="slide" name="spring20" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                                                  <geom type="box" name="mass20" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                                                  <body name="node21" euler="0 0 0" pos=" 0.0100 0 0">
+                                                                    <joint ref="0" type="slide" name="spring21" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                                                     <geom type="box" name="mass21" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                                                     <body name="node22" euler="0 0 0" pos=" 0.0100 0 0">
+                                                                       <joint ref="0" type="slide" name="spring22" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                                                        <geom type="box" name="mass22" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                                                        <body name="node23" euler="0 0 0" pos=" 0.0100 0 0">
+                                                                          <joint ref="0" type="slide" name="spring23" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                                                           <geom type="box" name="mass23" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                                                           <body name="node24" euler="0 0 0" pos=" 0.0100 0 0">
+                                                                             <joint ref="0" type="slide" name="spring24" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                                                              <geom type="box" name="mass24" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                                                              <body name="node25" euler="0 0 0" pos=" 0.0100 0 0">
+                                                                                <joint ref="0" type="slide" name="spring25" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                                                                 <geom type="box" name="mass25" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                                                                 <body name="node26" euler="0 0 0" pos=" 0.0100 0 0">
+                                                                                   <joint ref="0" type="slide" name="spring26" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                                                                    <geom type="box" name="mass26" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                                                                    <body name="node27" euler="0 0 0" pos=" 0.0100 0 0">
+                                                                                      <joint ref="0" type="slide" name="spring27" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                                                                       <geom type="box" name="mass27" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                                                                       <body name="node28" euler="0 0 0" pos=" 0.0100 0 0">
+                                                                                         <joint ref="0" type="slide" name="spring28" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                                                                          <geom type="box" name="mass28" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                                                                          <body name="node29" euler="0 0 0" pos=" 0.0100 0 0">
+                                                                                            <joint ref="0" type="slide" name="spring29" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                                                                             <geom type="box" name="mass29" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                                                                             <body name="node30" euler="0 0 0" pos=" 0.0100 0 0">
+                                                                                               <joint ref="0" type="slide" name="spring30" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                                                                                <geom type="box" name="mass30" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                                                                                <body name="node31" euler="0 0 0" pos=" 0.0100 0 0">
+                                                                                                  <joint ref="0" type="slide" name="spring31" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                                                                                   <geom type="box" name="mass31" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                                                                                   <body name="node32" euler="0 0 0" pos=" 0.0100 0 0">
+                                                                                                     <joint ref="0" type="slide" name="spring32" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                                                                                      <geom type="box" name="mass32" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                                                                                      <body name="node33" euler="0 0 0" pos=" 0.0100 0 0">
+                                                                                                        <joint ref="0" type="slide" name="spring33" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                                                                                         <geom type="box" name="mass33" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                                                                                         <body name="node34" euler="0 0 0" pos=" 0.0100 0 0">
+                                                                                                           <joint ref="0" type="slide" name="spring34" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                                                                                            <geom type="box" name="mass34" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                                                                                            <body name="node35" euler="0 0 0" pos=" 0.0100 0 0">
+                                                                                                              <joint ref="0" type="slide" name="spring35" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                                                                                               <geom type="box" name="mass35" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                                                                                               <body name="node36" euler="0 0 0" pos=" 0.0100 0 0">
+                                                                                                                 <joint ref="0" type="slide" name="spring36" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                                                                                                  <geom type="box" name="mass36" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                                                                                                  <body name="node37" euler="0 0 0" pos=" 0.0100 0 0">
+                                                                                                                    <joint ref="0" type="slide" name="spring37" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                                                                                                     <geom type="box" name="mass37" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                                                                                                     <body name="node38" euler="0 0 0" pos=" 0.0100 0 0">
+                                                                                                                       <joint ref="0" type="slide" name="spring38" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                                                                                                        <geom type="box" name="mass38" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                                                                                                        <body name="node39" euler="0 0 0" pos=" 0.0100 0 0">
+                                                                                                                          <joint ref="0" type="slide" name="spring39" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                                                                                                           <geom type="box" name="mass39" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                                                                                                           <body name="node40" euler="0 0 0" pos=" 0.0100 0 0">
+                                                                                                                             <joint ref="0" type="slide" name="spring40" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                                                                                                              <geom type="box" name="mass40" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                                                                                                              <body name="node41" euler="0 0 0" pos=" 0.0100 0 0">
+                                                                                                                                <joint ref="0" type="slide" name="spring41" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                                                                                                                 <geom type="box" name="mass41" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                                                                                                                 <body name="node42" euler="0 0 0" pos=" 0.0100 0 0">
+                                                                                                                                   <joint ref="0" type="slide" name="spring42" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                                                                                                                    <geom type="box" name="mass42" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                                                                                                                    <body name="node43" euler="0 0 0" pos=" 0.0100 0 0">
+                                                                                                                                      <joint ref="0" type="slide" name="spring43" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                                                                                                                       <geom type="box" name="mass43" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                                                                                                                       <body name="node44" euler="0 0 0" pos=" 0.0100 0 0">
+                                                                                                                                         <joint ref="0" type="slide" name="spring44" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                                                                                                                          <geom type="box" name="mass44" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                                                                                                                          <body name="node45" euler="0 0 0" pos=" 0.0100 0 0">
+                                                                                                                                            <joint ref="0" type="slide" name="spring45" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                                                                                                                             <geom type="box" name="mass45" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                                                                                                                             <body name="node46" euler="0 0 0" pos=" 0.0100 0 0">
+                                                                                                                                               <joint ref="0" type="slide" name="spring46" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                                                                                                                                <geom type="box" name="mass46" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                                                                                                                                <body name="node47" euler="0 0 0" pos=" 0.0100 0 0">
+                                                                                                                                                  <joint ref="0" type="slide" name="spring47" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                                                                                                                                   <geom type="box" name="mass47" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                                                                                                                                   <body name="node48" euler="0 0 0" pos=" 0.0100 0 0">
+                                                                                                                                                     <joint ref="0" type="slide" name="spring48" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                                                                                                                                      <geom type="box" name="mass48" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                                                                                                                                      <body name="node49" euler="0 0 0" pos=" 0.0100 0 0">
+                                                                                                                                                        <joint ref="0" type="slide" name="spring49" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                                                                                                                                         <geom type="box" name="mass49" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                                                                                                                                         <body name="node50" euler="0 0 0" pos=" 0.0100 0 0">
+                                                                                                                                                           <joint ref="0" type="slide" name="spring50" stiffness="1" pos=" 0.0000 0 0" axis="1 0 0" />
+                                                                                                                                                            <geom type="box" name="mass50" mass="1" pos=" 0.0000 0 0" material="JointColor" size=" 0.0020 0.0020 0.0020" />
+                                                                                                                                                         </body>
+                                                                                                                                                      </body>
+                                                                                                                                                   </body>
+                                                                                                                                                </body>
+                                                                                                                                             </body>
+                                                                                                                                          </body>
+                                                                                                                                       </body>
+                                                                                                                                    </body>
+                                                                                                                                 </body>
+                                                                                                                              </body>
+                                                                                                                           </body>
+                                                                                                                        </body>
+                                                                                                                     </body>
+                                                                                                                  </body>
+                                                                                                               </body>
+                                                                                                            </body>
+                                                                                                         </body>
+                                                                                                      </body>
+                                                                                                   </body>
+                                                                                                </body>
+                                                                                             </body>
+                                                                                          </body>
+                                                                                       </body>
+                                                                                    </body>
+                                                                                 </body>
+                                                                              </body>
+                                                                           </body>
+                                                                        </body>
+                                                                     </body>
+                                                                  </body>
+                                                               </body>
+                                                            </body>
+                                                         </body>
+                                                      </body>
+                                                   </body>
+                                                </body>
+                                             </body>
+                                          </body>
+                                       </body>
+                                    </body>
+                                 </body>
+                              </body>
+                           </body>
+                        </body>
+                     </body>
+                  </body>
+               </body>
+            </body>
+         </body>
+      </body>
+   </worldbody>
+   <actuator>
+
+		
+
+
+  </actuator>
+</mujoco>

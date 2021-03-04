@@ -199,7 +199,7 @@ class Simulation( ):
                 if self.args[ 'saveData' ]:
                     my_print( currentTime       = self.current_time,
                               jointAngleActual  = self.mjData.qpos[ : ],
-                              inputx0           = self.controller.x0, 
+                              inputx0           = self.controller.x0,
                               geomXYZPositions  = self.mjData.geom_xpos[ self.idx_geom_names ],
                               file              = file )
 
@@ -207,7 +207,7 @@ class Simulation( ):
             # input_ref: The data array that are aimed to be inputted (e.g., qpos, qvel, qctrl etc.)
             # input_idx: The specific index of input_ref data array that should be inputted
             # input:     The actual input value which is inputted to input_ref
-            input_ref, input_idx, input = self.controller.input_calc( self.start_time, self.current_time )
+            input_ref, input_idx, input = self.controller.input_calc( self.current_time )
             input_ref[ input_idx ] = input
 
 
