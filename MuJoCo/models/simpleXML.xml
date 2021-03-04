@@ -61,26 +61,22 @@
     <!-- ===============  MODEL STARTS  =============== -->
 
     <!-- ============ UPPER ARM START =============== -->
-		<body name='root' pos='0 0 0' euler='0 0 0'>
-			<joint name='impedanceController' ref='0' type='slide' stiffness='0' pos='0 0 0' axis='1 0 0' />
-			<inertial pos='0 0 0'  mass='1' diaginertia='1 1 1' />
-			<geom name='manipulatorMassGEOM1' type='box' pos='0 0 0' material='JointColor' size='0.1 0.1 0.1' mass='0'/>
 
-			<body name='manipulatedMass1' pos='0 0 0' euler='0 0 0'>
+		<body name='root' pos='0 0 0' euler='0 0 0'>
+			<geom name='manipulatorMassGEOM1' type='box' pos='0 0 0' material='JointColor' size='0.1 0.1 0.1' mass='1'/>
+			<joint name='sender' ref='0' type='slide' stiffness='0' pos='0 0 0' axis='1 0 0' />
+
+			<body name='manipulatedMass1' pos='1 0 0' euler='0 0 0'>
 				<joint name='spring1' ref='0' type='slide' stiffness='1' pos='0 0 0' axis='1 0 0' />
-				<inertial pos='1.0 0 0' mass='1' diaginertia='1 1 1' />
-				<geom name='manipulatedMassGEOM2' type='box' pos='1.0 0 0' material='JointColor' size='0.1 0.1 0.1' mass='0'/>
+				<geom name='manipulatedMassGEOM2' type='box' pos='0 0 0' material='JointColor' size='0.1 0.1 0.1' mass='1'/>
 
 				<body name='manipulatedMass2' pos='1 0 0' euler='0 0 0'>
 					<joint name='spring2' ref='0' type='slide' stiffness='1' pos='0 0 0' axis='1 0 0' />
-					<inertial pos='1.0 0 0' mass='1' diaginertia='1 1 1' />
-					<geom name='manipulatedMassGEOM3' type='box' pos='1.0 0 0' material='JointColor' size='0.1 0.1 0.1' mass='0'/>
+					<geom name='manipulatedMassGEOM3' type='box' pos='1.0 0 0' material='JointColor' size='0.1 0.1 0.1' mass='1'/>
 
 					<body name='manipulatedMass3' pos='1 0 0' euler='0 0 0'>
 						<joint name='spring3' ref='0' type='slide' stiffness='1' pos='0 0 0' axis='1 0 0' />
-						<inertial pos='1.0 0 0' mass='1' diaginertia='1 1 1' />
-						<geom name='manipulatedMassGEOM4' type='box' pos='1.0 0 0' material='JointColor' size='0.1 0.1 0.1' mass='0'/>
-
+						<geom name='manipulatedMassGEOM4' type='box' pos='1.0 0 0' material='JointColor' size='0.1 0.1 0.1' mass='1'/>
 
 					</body>
 				</body>
@@ -94,7 +90,7 @@
 	<!-- This xml model file don't use the actuator, since it simply runs to the exact joint position -->
 	<actuator>
 
-		<motor joint = 'impedanceController' name = 'impedanceControllerAct'  forcelimited = 'false'/>
+		<motor joint = 'sender' name = 'impedanceControllerAct'  forcelimited = 'false'/>
 
   </actuator>
 

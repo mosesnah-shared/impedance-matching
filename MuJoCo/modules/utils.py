@@ -6,6 +6,11 @@ import shutil
 import time, datetime
 import math  as myMath
 
+
+import glfw
+
+
+
 # [3rd party modules]
 import cv2
 import argparse
@@ -33,6 +38,9 @@ class MyVideo:
         ----------
     """
     def __init__( self, vid_dir = None, height = 2880, width = 1700, fps = 60 ):
+
+        # [TODO] We should automate the screen resolution problem.
+
         self.height    = height
         self.width     = width
         self.vid_dir   = vid_dir if not None else "."
@@ -42,13 +50,12 @@ class MyVideo:
                                                                                 # For example, VideoWriter::fourcc('P','I','M','1') is a MPEG-1 codec,
                                                                                 #              VideoWriter::fourcc('M','J','P','G') is a motion-jpeg codec etc.
                                                                                 # List of codes can be obtained at Video Codecs by FOURCC page.
-        # self.outVideo  = cv2.VideoWriter( self.vid_dir + "/video.mp4", fourcc, fps, ( self.height, self.width ) )
-        self.outVideo  = cv2.VideoWriter( self.vid_dir + "/video.mp4", fourcc, fps, ( self.height//2, self.width//2 ) )
+        self.outVideo  = cv2.VideoWriter( self.vid_dir + "/video.mp4", fourcc, fps, ( self.height, self.width ) )
+        # self.outVideo  = cv2.VideoWriter( self.vid_dir + "/video.mp4", fourcc, fps, ( self.height//2, self.width//2 ) )
 
     def write( self, myViewer ):
         data = myViewer.read_pixels( self.height, self.width, depth = False )   # Get the pixel from the render screen
-        data = cv2.resize( data,( self.height//2, self.width//2  ) )
-
+        # data = cv2.resize( data,( self.height//2, self.width//2  ) )
         self.outVideo.write( np.flip( data, axis = 0 ) )
 
     def release( self ):
@@ -125,7 +132,6 @@ def euler2quaternion( euler_angs ):
 
     return w,x,y,z
 
-
 def quaternion2euler( quatVec ):                                                # Inputting quaternion matrix and outputing the yaw, pitch, roll of the euler angle.
     """
         Converting a R4 quaternion vector (w, x, y, z) to Euler Angle (Roll, Pitch, Yaw)
@@ -164,7 +170,6 @@ def quaternion2euler( quatVec ):                                                
     yaw    = myMath.atan2( t3, t4 )
 
     return yaw, pitch, roll
-
 
 def str2bool( s ):
     """

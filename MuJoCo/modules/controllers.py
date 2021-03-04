@@ -62,11 +62,6 @@ class Controller( ):
                 else:
                     pass
 
-    def input_calc( self, start_time, current_time ):
-        """
-            Calculating the torque input
-        """
-        raise NotImplementedError                                               # Adding this NotImplementedError will force the child class to override parent's methods.
 
 
 class ImpedanceController( Controller ):
@@ -78,7 +73,7 @@ class ImpedanceController( Controller ):
 
     """
 
-    def __init__( self, mjModel, mjData ):
+    def __init__( self, mjModel, mjData, type = "oscillation"  ):
 
         super().__init__( mjModel, mjData )
 
@@ -93,6 +88,7 @@ class ImpedanceController( Controller ):
         self.ctrl_par_names = [ "K", "B" ]                                      # Useful for self.set_ctrl_par method
         self.t_sym = sp.symbols( 't' )                                          # time symbol of the equation
 
+        self.type = type
 
     def set_ZFT( self, trajectory ):
         """
@@ -117,15 +113,27 @@ class ImpedanceController( Controller ):
 
         return x0
 
-    def input_calc( self, start_time, current_time ):
+    def input_calc( self, current_time ):
 
 
         self.x  = self.mjData.qpos[ 0 ]
         self.x0 = self.get_ZFT( current_time )
 
-        # tau_imp = np.dot( self.K, self.x0 - self.x )
-        tau_imp = self.x0
-        print( self.x0 )
+        if   self.type == "oscillation":
+            tau_imp = np.dot( self.K, self.x0 - self.x )
+
+        elif self.type == "pulse":
+            if 0.5 <= current_time <= 0.6:
+                tau_imp = 2
+            else:
+                tau_imp = 0
+
+
+        # Adding impedance matching
+        tmp = -np.sqrt( 100 ) * self.mjData.get_geom_xvelp( "tip"  )[ 0 ]
+        # print( self.mjData.get_geom_xvelp( "tip"  ) )
+        self.mjData.xfrc_applied[ -1, : ] = [ tmp, 0, 0, 0, 0, 0 ]
+
 
         return self.mjData.ctrl, self.idx_act, tau_imp
 
