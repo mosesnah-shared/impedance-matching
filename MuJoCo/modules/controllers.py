@@ -124,13 +124,13 @@ class ImpedanceController( Controller ):
 
         elif self.type == "pulse":
             if 0.5 <= current_time <= 0.6:
-                tau_imp = 2
+                tau_imp = 4
             else:
                 tau_imp = 0
 
 
         # Adding impedance matching
-        tmp = -np.sqrt( 100 ) * self.mjData.get_geom_xvelp( "tip"  )[ 0 ]
+        tmp = -np.sqrt( 10000 ) * self.mjData.get_geom_xvelp( "tip"  )[ 0 ]
         # print( self.mjData.get_geom_xvelp( "tip"  ) )
         self.mjData.xfrc_applied[ -1, : ] = [ tmp, 0, 0, 0, 0, 0 ]
 
