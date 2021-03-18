@@ -51,11 +51,9 @@ class MyVideo:
                                                                                 #              VideoWriter::fourcc('M','J','P','G') is a motion-jpeg codec etc.
                                                                                 # List of codes can be obtained at Video Codecs by FOURCC page.
         self.outVideo  = cv2.VideoWriter( self.vid_dir + "/video.mp4", fourcc, fps, ( self.height, self.width ) )
-        # self.outVideo  = cv2.VideoWriter( self.vid_dir + "/video.mp4", fourcc, fps, ( self.height//2, self.width//2 ) )
 
     def write( self, myViewer ):
         data = myViewer.read_pixels( self.height, self.width, depth = False )   # Get the pixel from the render screen
-        # data = cv2.resize( data,( self.height//2, self.width//2  ) )
         self.outVideo.write( np.flip( data, axis = 0 ) )
 
     def release( self ):
